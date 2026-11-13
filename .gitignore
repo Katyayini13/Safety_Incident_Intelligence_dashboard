@@ -1,0 +1,25 @@
+# Python environments and generated files
+.venv/
+**/.venv/
+venv/
+**/venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node dependencies and build output
+node_modules/
+**/node_modules/
+frontend/dist/
+
+# Local credentials/configuration; keep the safe template
+.env
+.env.*
+!.env.example
+
+# Editor and OS artifacts
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,966 @@
+{
+  "dataset": "synthetic_development_incidents.csv",
+  "data_disclosure": "All records are synthetic development examples; none are Greenko/company incidents. These scores do not estimate production performance.",
+  "records": 180,
+  "unique_narratives": 180,
+  "scenario_groups": 180,
+  "category_class_counts": {
+    "environment": 60,
+    "esg_compliance": 60,
+    "safety": 60
+  },
+  "severity_class_counts": {
+    "high": 60,
+    "low": 60,
+    "medium": 60
+  },
+  "category_severity_counts": {
+    "environment/high": 20,
+    "environment/low": 20,
+    "environment/medium": 20,
+    "esg_compliance/high": 20,
+    "esg_compliance/low": 20,
+    "esg_compliance/medium": 20,
+    "safety/high": 20,
+    "safety/low": 20,
+    "safety/medium": 20
+  },
+  "random_seed": 42,
+  "split": {
+    "strategy": "stratified group 80/20 holdout by scenario_group; model candidates selected by 4-fold stratified group CV within training partition",
+    "group_isolation": true,
+    "inner_cv_group_isolation": true,
+    "train_groups": 144,
+    "test_groups": 36,
+    "train_records": 144,
+    "test_records": 36,
+    "train_class_counts": {
+      "environment": 49,
+      "esg_compliance": 48,
+      "safety": 47
+    },
+    "test_class_counts": {
+      "environment": 11,
+      "esg_compliance": 12,
+      "safety": 13
+    }
+  },
+  "category_model_selection": {
+    "selection_metric": "mean macro F1 across 4-fold CV on training partition",
+    "tie_break": "lower fold-score standard deviation, then stable candidate order",
+    "selected_model": "LinearSVC",
+    "selected_config": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 1,
+      "sublinear_tf": false,
+      "C": 2.0,
+      "class_weight": "balanced"
+    },
+    "cv_f1_macro_mean": 0.9721,
+    "cv_f1_macro_std": 0.0198,
+    "best_by_model_family": [
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9721,
+        "cv_f1_macro_std": 0.0198,
+        "heldout_metrics": {
+          "precision_macro": 1.0,
+          "recall_macro": 1.0,
+          "f1_macro": 1.0,
+          "confusion_matrix_labels": [
+            "environment",
+            "esg_compliance",
+            "safety"
+          ],
+          "confusion_matrix": [
+            [
+              11,
+              0,
+              0
+            ],
+            [
+              0,
+              12,
+              0
+            ],
+            [
+              0,
+              0,
+              13
+            ]
+          ]
+        }
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9368,
+        "cv_f1_macro_std": 0.0236,
+        "heldout_metrics": {
+          "precision_macro": 0.9556,
+          "recall_macro": 0.9394,
+          "f1_macro": 0.9429,
+          "confusion_matrix_labels": [
+            "environment",
+            "esg_compliance",
+            "safety"
+          ],
+          "confusion_matrix": [
+            [
+              9,
+              0,
+              2
+            ],
+            [
+              0,
+              12,
+              0
+            ],
+            [
+              0,
+              0,
+              13
+            ]
+          ]
+        }
+      }
+    ],
+    "candidates": [
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9436,
+        "cv_f1_macro_std": 0.0205
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8879,
+        "cv_f1_macro_std": 0.0487
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9576,
+        "cv_f1_macro_std": 0.0146
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9087,
+        "cv_f1_macro_std": 0.0414
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9576,
+        "cv_f1_macro_std": 0.0146
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9368,
+        "cv_f1_macro_std": 0.0236
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9365,
+        "cv_f1_macro_std": 0.0238
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8805,
+        "cv_f1_macro_std": 0.0546
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9435,
+        "cv_f1_macro_std": 0.0287
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9229,
+        "cv_f1_macro_std": 0.0366
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9436,
+        "cv_f1_macro_std": 0.0343
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9368,
+        "cv_f1_macro_std": 0.0236
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8653,
+        "cv_f1_macro_std": 0.0223
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8005,
+        "cv_f1_macro_std": 0.0571
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8792,
+        "cv_f1_macro_std": 0.0427
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8303,
+        "cv_f1_macro_std": 0.0344
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8731,
+        "cv_f1_macro_std": 0.0511
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8511,
+        "cv_f1_macro_std": 0.0364
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8646,
+        "cv_f1_macro_std": 0.0238
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8077,
+        "cv_f1_macro_std": 0.0588
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.872,
+        "cv_f1_macro_std": 0.0323
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8377,
+        "cv_f1_macro_std": 0.024
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8725,
+        "cv_f1_macro_std": 0.0472
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            1
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8444,
+        "cv_f1_macro_std": 0.0315
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9505,
+        "cv_f1_macro_std": 0.0242
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8864,
+        "cv_f1_macro_std": 0.0643
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9652,
+        "cv_f1_macro_std": 0.0231
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9076,
+        "cv_f1_macro_std": 0.0651
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9721,
+        "cv_f1_macro_std": 0.0198
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9296,
+        "cv_f1_macro_std": 0.0314
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9505,
+        "cv_f1_macro_std": 0.0242
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8864,
+        "cv_f1_macro_std": 0.0643
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9652,
+        "cv_f1_macro_std": 0.0231
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9076,
+        "cv_f1_macro_std": 0.0651
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.9721,
+        "cv_f1_macro_std": 0.0198
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 1,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.9296,
+        "cv_f1_macro_std": 0.0314
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8426,
+        "cv_f1_macro_std": 0.0324
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.7468,
+        "cv_f1_macro_std": 0.0572
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8653,
+        "cv_f1_macro_std": 0.0423
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.7608,
+        "cv_f1_macro_std": 0.0546
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8726,
+        "cv_f1_macro_std": 0.0326
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": false,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.8141,
+        "cv_f1_macro_std": 0.0493
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8426,
+        "cv_f1_macro_std": 0.0324
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 0.5,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.7468,
+        "cv_f1_macro_std": 0.0572
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8579,
+        "cv_f1_macro_std": 0.0348
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 1.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.7689,
+        "cv_f1_macro_std": 0.0441
+      },
+      {
+        "model": "LinearSVC",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced"
+        },
+        "cv_f1_macro_mean": 0.8652,
+        "cv_f1_macro_std": 0.0244
+      },
+      {
+        "model": "LogisticRegression",
+        "config": {
+          "ngram_range": [
+            1,
+            2
+          ],
+          "min_df": 2,
+          "sublinear_tf": true,
+          "C": 2.0,
+          "class_weight": "balanced",
+          "solver": "lbfgs"
+        },
+        "cv_f1_macro_mean": 0.7985,
+        "cv_f1_macro_std": 0.0566
+      }
+    ],
+    "heldout_metrics": {
+      "precision_macro": 1.0,
+      "recall_macro": 1.0,
+      "f1_macro": 1.0,
+      "confusion_matrix_labels": [
+        "environment",
+        "esg_compliance",
+        "safety"
+      ],
+      "confusion_matrix": [
+        [
+          11,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          13
+        ]
+      ]
+    }
+  },
+  "severity_rules": {
+    "method": "independent deterministic severity_screen rules; not a trained classifier",
+    "heldout_metrics": {
+      "precision_macro": 0.8439,
+      "recall_macro": 0.8317,
+      "f1_macro": 0.825,
+      "confusion_matrix_labels": [
+        "high",
+        "low",
+        "medium"
+      ],
+      "confusion_matrix": [
+        [
+          8,
+          0,
+          4
+        ],
+        [
+          0,
+          13,
+          1
+        ],
+        [
+          1,
+          0,
+          9
+        ]
+      ]
+    },
+    "test_class_counts": {
+      "high": 12,
+      "low": 14,
+      "medium": 10
+    }
+  },
+  "limitations": [
+    "Generated synthetic narratives have patterned vocabulary; results measure this development set only.",
+    "Do not describe these metrics as production accuracy or independent real-incident validation.",
+    "The live category model remains trained on the six original bundled rows; synthetic records are excluded from runtime training and retrieval.",
+    "The rule-based severity test is a synthetic-set diagnostic, not a risk assessment."
+  ]
+}
